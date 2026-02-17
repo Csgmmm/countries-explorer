@@ -8,10 +8,12 @@ export interface ICountry {
   region: string;
   subregion: string;
   population: number;
-  flags: flag;
-  languages: { [key: string]: string }; //[key]/acessor/aceita várias keys. A key aceita string e retorna outra string
-  currencies: currency;
+  flags: Flag;
+  languages: Languages; 
+  currencies: Currency;
 }
 
-export type flag = { png: string; svg: string; alt: string }; //fazer type com os varios objetos da key, e ligar à key da interface, porque fica mais facil de leitura (e ate mesmo para reutilização do type)
-export type currency = { [key: string]: { name: string; symbol: string } };
+type Languages = { [key: string]: string }; //[key]/acessor/aceita várias keys. A key aceita string e retorna outra string
+type Flag = { png: string; svg: string; alt: string }; //fazer type com os varios objetos da key, e ligar à key da interface, porque fica mais facil de leitura (e ate mesmo para reutilização do type)
+type Currency = { [key: string]: { name: string; symbol: string } };
+ 
