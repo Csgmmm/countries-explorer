@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 function SingleCountry() {
   return (
     <div>

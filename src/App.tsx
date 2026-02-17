@@ -4,7 +4,7 @@ import CountriesList from "./Components/CountriesList";
 function App() {
   return (
     <>
-      <h1>ola</h1>
+      <h1>These are the countries</h1>
       {<CountriesList />}
     </>
   );
