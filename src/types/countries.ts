@@ -1,5 +1,5 @@
 import type { ICountries } from "./types";
-import type { ICountryPortugal } from "./country";
+import type { ICountry } from "./country";
 
 const countries: ICountries = [
   {
@@ -198,7 +198,7 @@ const countries: ICountries = [
 
 console.log(countries);
 
-const country: ICountryPortugal = {
+const country: ICountry = {
   name: {
     common: "Portugal",
     official: "Portuguese Republic",

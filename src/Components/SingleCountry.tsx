@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import type { ICountry } from "../types/country";
 
 function SingleCountry() {
-  const [countriesList, setCountriesLists] = useState([]); //aqui é onde vou guardar a lista de países, e o setCountriesList é a chave para abrir a gaveta e colocar a lista de países lá dentro
-  const [country, setCountry] = useState(); //aqui é onde vou guardar o país que quero mostrar os detalhes, e o setCountry é a chave para abrir a gaveta e colocar o país lá dentro
-  const [selectedCountry, setSelectedCountry] = useState("pt"); //aqui é onde está o pais selecionado na gaveta, e o setSelectedCountry é a chave para abrir a gaveta e colocar o país selecionado lá dentro e o "pt" é o valor inicial do país selecionado, ou seja, quando a página for carregada pela primeira vez, o país selecionado vai ser Portugal
+  const [countriesList, setCountriesLists] = useState<ICountry[]>([]); //aqui é onde vou guardar a lista de países, e o setCountriesList é a chave para abrir a gaveta e colocar a lista de países lá dentro
+  const [country, setCountry] = useState<ICountry>() //aqui é onde vou guardar o país que quero mostrar os detalhes, e o setCountry é a chave para abrir a gaveta e colocar o país lá dentro
+  const [selectedCountry, setSelectedCountry] = useState<string>("pt"); //aqui é onde está o pais selecionado na gaveta, e o setSelectedCountry é a chave para abrir a gaveta e colocar o país selecionado lá dentro e o "pt" é o valor inicial do país selecionado, ou seja, quando a página for carregada pela primeira vez, o país selecionado vai ser Portugal
   console.log("Country", country);
+  
   useEffect(() => {
     const fetchCountries = async () => {
       const response = await fetch(
