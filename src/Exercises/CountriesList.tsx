@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import type { ICountry } from "../types/types";
+import "./css/CountriesList.css"
 
 function CountriesList() {
   //gaveta onde guardo os paises, e o setCountries é a chave para abrir a gaveta e colocar os paises lá dentro
-  const [countries, setCountries] = useState<ICountry[]>([]); //Tipar. Vem da interface do types.
+  const [countries, setCountries] = useState<ICountry[]>([]); //Tipar. Vem da interface do types. Se der erro no return, é porque a tipagem está errada do useState não tem nada ou errada.
 
   useEffect(() => {
     //useEffect 1

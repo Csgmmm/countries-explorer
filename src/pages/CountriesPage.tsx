@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import Card from "../Components/Card";
 import type { ICountry } from "../types/types";
+import { Link } from "react-router";
+import "../Components/css/CountriesPage.css"
 
 function CountriesPage() {
   const [countries, setCountries] = useState<ICountry[]>([]); //Country tipado
@@ -18,11 +20,17 @@ function CountriesPage() {
     fetchCountries();
   }, []);
 
-
   return (
-    <div style = {{display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: "40px"}}>
-      {countries?.map((country) => { {/*Aqui o country ºe cada item do array*/}
-        return <Card country={country} />;
+    <div className="grid">
+      {countries?.map((country) => {
+        {
+          /*Aqui o country ºe cada item do array*/
+        }
+        return (
+          <Link to={country.name.common}>
+            <Card country={country} />;
+          </Link>
+        );
       })}
     </div>
   );

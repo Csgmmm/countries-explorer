@@ -1,0 +1,30 @@
+button {
+    font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    text-decoration: none;
+    padding: 0.5rem;
+    gap: 10px;
+    border: 0px;
+}
+
+button svg {
+    width: 18px;  
+}
+
+.primary {
+background-color: transparent;
+color: black;
+}
+
+.primary:hover {
+background-color: rgb(209, 209, 209);
+color: black;
+}
+
+.active  {
+    background-color: black;
+    color: white;
+}
+
