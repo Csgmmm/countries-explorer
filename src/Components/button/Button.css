@@ -1,0 +1,48 @@
+button {
+  font-family:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  text-decoration: none;
+  padding: 0.5rem;
+  gap: 10px;
+  border: 0px;
+}
+
+button svg {
+  width: 18px;
+}
+
+.primary {
+  background-color: transparent;
+  color: black;
+}
+
+.primary:hover {
+  background-color: rgb(209, 209, 209);
+  color: black;
+}
+
+.primary.active {
+  background-color: black;
+  color: white;
+}
+
+.secondary {
+  background-color: pink;
+  color: black;
+}
+
+.secondary:hover {
+  background-color: rgb(152, 65, 79);
+  color: black;
+}
+
+.secondary:active {
+  background-color: rgb(65, 152, 81);
+  color: black;
+}
+
+/* Colocar todos com as variaveis atras, para que se possa diferenciar de outros tipos de botoes, e assim não fala de todos os botoes active, por exemplo, caso fosse .active*/

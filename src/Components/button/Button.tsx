@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import "./css/Button.css";
+import "./Button.css";
 
 type Button = {
   children: ReactNode;

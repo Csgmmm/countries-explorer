@@ -1,0 +1,16 @@
+.info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info span {
+  color: rgb(96, 96, 96);
+}
+
+.info h1 {
+  color: pink;
+}
+
+

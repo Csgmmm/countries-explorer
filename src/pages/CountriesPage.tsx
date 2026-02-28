@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
-import Card from "../Components/Card";
+import Card from "../Components/countryCard/CountryCard";
 import type { ICountry } from "../types/types";
 import { Link } from "react-router";
-import "../Components/css/CountriesPage.css"
+import "../Components/countryCard/countryCard.css";
 
 function CountriesPage() {
   const [countries, setCountries] = useState<ICountry[]>([]); //Country tipado
   console.log("Countries", countries); //1.Ele começa com um array vazio. Depois. 4. E agora, ele adiciona de forma sólida na gaveta os countries a API
+
+  const [inpuText, setInpuText] = useState("");
+
+  const filteredCountries = countries.filter((country) => {
+    const countryNameLowerCase = country.name.common.toLocaleLowerCase();
+    const searchLowerCase = inpuText.toLocaleLowerCase();
+    return countryNameLowerCase.includes(searchLowerCase);
+  });
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -21,18 +29,43 @@ function CountriesPage() {
   }, []);
 
   return (
-    <div className="grid">
-      {countries?.map((country) => {
-        {
-          /*Aqui o country ºe cada item do array*/
-        }
-        return (
-          <Link to={country.name.common}>
-            <Card country={country} />;
-          </Link>
-        );
-      })}
-    </div>
+    <>
+      <input
+        type="text"
+        id="searchInput"
+        className="searchBar"
+        onChange={(event) => {
+          //captura o value, utilizar o onChange
+          setInpuText(event.target.value); //guarda na minha gaveta o inputText que escrevemos na searchbar
+        }}
+      />
+
+      <div className="grid">
+        {inpuText && //se fizer match na seach
+          filteredCountries?.map((country) => {
+            {
+              /*Aqui o country ºe cada item do array*/
+            }
+            return (
+              <Link to={country.name.common}>
+                <Card country={country} />
+              </Link>
+            );
+          })}
+
+        {!inpuText && //Se nao fizer match na search
+          countries?.map((country) => {
+            {
+              /*Aqui o country ºe cada item do array*/
+            }
+            return (
+              <Link to={country.name.common}>
+                <Card country={country} />
+              </Link>
+            );
+          })}
+      </div>
+    </>
   );
 }
 
