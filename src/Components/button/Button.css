@@ -9,6 +9,7 @@ button {
   padding: 0.5rem;
   gap: 10px;
   border: 0px;
+  cursor: pointer;
 }
 
 button svg {
@@ -18,6 +19,7 @@ button svg {
 .primary {
   background-color: transparent;
   color: black;
+  border: 1px solid #bfbfbf;
 }
 
 .primary:hover {
