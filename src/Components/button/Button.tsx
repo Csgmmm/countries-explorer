@@ -3,7 +3,7 @@ import "./Button.css";
 
 type Button = {
   children?: ReactNode;
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "terciary";
   isActive?: boolean;
   text: string;
   onClick?: () => void;

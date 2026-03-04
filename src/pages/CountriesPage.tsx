@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import "../Components/countryCard/countryCard.css";
 import "../Components/searchbar/search.css";
 import Button from "../Components/button/Button";
-import { MapIcon, Search } from "lucide-react";
+import { Funnel, Search } from "lucide-react";
 
 function CountriesPage() {
   const [countries, setCountries] = useState<ICountry[]>([]); //Country tipado //Gavetas para guardar os countries e utiliza-los
@@ -31,15 +31,13 @@ function CountriesPage() {
   //currency
   const currencies = countries.flatMap((country) => {
     return country.currencies
-      ? Object.values(country.currencies).map((currency) => {
-          return currency.name;
+      ? Object.keys(country.currencies).map((currency) => {
+          return currency;
         })
       : [];
   });
-  console.log("moneyyyyyyy", currencies);
 
   const uniqueCurrencies = [...new Set(currencies)];
-  console.log("currenmoney", uniqueCurrencies);
 
   const filteredCountries = countries.filter((country) => {
     const searchLowerCase = inpuText.toLowerCase(); //variavel que vai conter o input pronta para ter lowercase
@@ -66,6 +64,7 @@ function CountriesPage() {
       country.capital?.[0]?.toLowerCase().includes(inpuText.toLowerCase()) ||
       country.region.toLowerCase().includes(searchLowerCase);
 
+
     const continentsSelector =
       selectedContinent === "" || country.region === selectedContinent; //verifica se o continente selecionado é vazio ou se o continente do país é igual ao continente selecionado
     const regionsSelector =
@@ -74,11 +73,14 @@ function CountriesPage() {
       selectedCurrency === "" ||
       (country.currencies &&
         Object.keys(country.currencies).includes(selectedCurrency)); //ele aceita as correncies sem valor (o default) e verifica se as keys do object das currencies incluem o que esta inserido na gaveta do selectedCurrency
-
+console.log(searchAll, continentsSelector, regionsSelector, currencySelector)
     return (
-      searchAll && continentsSelector && regionsSelector && currencySelector
+      searchAll && continentsSelector && regionsSelector && currencySelector 
     );
+    
   });
+    console.log("oalalal", filteredCountries)
+
   const clearFilter = () => {
     setSelectedContinent("");
     setSelectedRegion("");
@@ -114,9 +116,10 @@ function CountriesPage() {
         </div>
 
         <div className="filters">
+          <Funnel className="filterIcon" size={18}/>
           <span>Filter by:</span>
           <select
-            value={selectedContinent}
+            value={selectedContinent} 
             onChange={(e) => setSelectedContinent(e.target.value)}
           >
             <option value="">Continents</option>
@@ -145,15 +148,12 @@ function CountriesPage() {
               return <option>{currency}</option>;
             })}
           </select>
-          <Button variant="primary" text="FAZER" onClick={clearFilter} />
-
-          <Button variant="primary" text="Clear" onClick={clearFilter} />
+          <Button variant="terciary" text="Clear filter" onClick={clearFilter} />
         </div>
       </div>
 
       <div className="grid">
-        {inpuText && //se fizer match na seach
-          filteredCountries?.map((country) => {
+          {filteredCountries?.map((country) => {
             {
               /*Aqui o country ºe cada item do array*/
             }
@@ -164,17 +164,12 @@ function CountriesPage() {
             );
           })}
 
-        {!inpuText && //Se nao fizer match na search
-          countries?.map((country) => {
+        {/* {!inpuText && //Se nao fizer match na search
+          filteredCountries?.map((country) => {
             {
               /*Aqui o country ºe cada item do array*/
             }
-            return (
-              <Link to={country.name.common}>
-                <Card country={country} />
-              </Link>
-            );
-          })}
+          
       </div>
     </>
   );

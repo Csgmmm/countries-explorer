@@ -47,4 +47,22 @@ button svg {
   color: black;
 }
 
+.terciary {
+  background-color: rgb(255, 255, 255);
+  color: #444444(60, 60, 60);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.terciary:hover {
+  background-color: rgb(234, 234, 234);
+  color: #444444;
+}
+
+.terciary:active {
+  background-color: rgb(200, 200, 200);
+  color: #444444;
+}
+
+
 /* Colocar todos com as variaveis atras, para que se possa diferenciar de outros tipos de botoes, e assim não fala de todos os botoes active, por exemplo, caso fosse .active*/
