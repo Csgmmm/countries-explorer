@@ -33,17 +33,19 @@ button svg {
 }
 
 .secondary {
-  background-color: pink;
+  background-color: rgb(255, 255, 255);
   color: black;
+  border: 1px solid rgb(229, 229, 229);
 }
 
 .secondary:hover {
-  background-color: rgb(152, 65, 79);
+  background-color: rgb(233, 233, 233);
   color: black;
+
 }
 
 .secondary:active {
-  background-color: rgb(65, 152, 81);
+  background-color: rgb(208, 208, 208);
   color: black;
 }
 

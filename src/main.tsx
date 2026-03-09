@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { BrowserRouter, Route, Routes } from "react-router";
 import Continents from "./pages/ContinentsPage.tsx";
-import CountryPage from "./pages/CountryPage.tsx";
+import CountryPage from "./pages/countriespage/CountryPage.tsx";
 import CountriesPage from "./pages/CountriesPage.tsx";
 import Navbar from "./Components/navbar/NavBar.tsx";
 import CurrencyPage from "./pages/CurrencyPage.tsx";

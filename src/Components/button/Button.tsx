@@ -5,14 +5,13 @@ type Button = {
   children?: ReactNode;
   variant: "primary" | "secondary" | "terciary";
   isActive?: boolean;
-  text: string;
   onClick?: () => void;
 };
 
-function Button({ children, variant, isActive, text, onClick }: Button) {
+function Button({ children, variant, isActive, onClick }: Button) {
   return (
     <button className={`${variant} ${isActive && "active"}`} onClick={onClick}>
-      {children} {text}
+      {children}
     </button>
   );
 }

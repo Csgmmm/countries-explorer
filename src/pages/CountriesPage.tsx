@@ -20,7 +20,7 @@ function CountriesPage() {
     return country.region;
   });
   const uniqueContinents = [...new Set(continents)]; //pega na lista e garate que tenho valores unicos dos que sao repetidos
-
+//fazer tentativa do replace para tirar os espaços em branco
   //regions
   const regions = countries.map((country) => {
     //criar uma variavel, e quero que ele vá a todos os paises e retorne a subregion
@@ -148,7 +148,7 @@ console.log(searchAll, continentsSelector, regionsSelector, currencySelector)
               return <option>{currency}</option>;
             })}
           </select>
-          <Button variant="terciary" text="Clear filter" onClick={clearFilter} />
+          <Button variant="terciary" onClick={clearFilter} >Clear filter</Button>
         </div>
       </div>
 
@@ -158,7 +158,7 @@ console.log(searchAll, continentsSelector, regionsSelector, currencySelector)
               /*Aqui o country ºe cada item do array*/
             }
             return (
-              <Link to={country.name.common}>
+              <Link to={`/countries/${country.name.common}`}>
                 <Card country={country} />
               </Link>
             );
