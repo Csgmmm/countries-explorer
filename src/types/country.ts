@@ -28,12 +28,13 @@ export interface ICountry {
   fifa: string;
   car: { signs: [string]; side: string };
   timezones: [string, string];
-  continents: string[];
+  continents?: string[];
   flags: Flags;
   coatOfArms: Pick<ImgsExtensions, "png" | "svg">; //Adicionar Pick<name, ... | ...>, e assim caso haja mais extensões, posso adicionar no type.
   capitalInfo: CapitalInfo;
   startOfWeek: WeekDays;
   postalCode: { format: string; regex: string };
+  
 }
 
 type Name = {

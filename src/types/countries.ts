@@ -371,7 +371,6 @@ const country: ICountry = {
     side: "right",
   },
   timezones: ["UTC-01:00", "UTC"],
-  continents: ["Europe"],
   flags: {
     png: "https://flagcdn.com/w320/pt.png",
     svg: "https://flagcdn.com/pt.svg",

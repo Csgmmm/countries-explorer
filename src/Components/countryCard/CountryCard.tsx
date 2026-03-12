@@ -9,7 +9,9 @@ interface ICountryCard {
 function CountryCard({ country }: ICountryCard) {
   return (
     <Card>
-      <img src={country.flags.png} alt={country.name.common}></img>
+      <div className="card-container">
+        <img className="card-img" src={country.flags.png} alt={country.name.common} />
+      </div>
       <h1>
         <strong>{country.name.common}</strong>
       </h1>

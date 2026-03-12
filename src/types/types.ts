@@ -11,7 +11,7 @@ export interface ICountry {
   flags: Flag;
   languages: Languages; 
   currencies: Currency;
-  continents: string[]
+  continents?: string[];
 }
 
 type Languages = { [key: string]: string }; //[key]/acessor/aceita várias keys. A key aceita string e retorna outra string

@@ -1,12 +1,12 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import type { ICountry } from "../../types/types";
+import type { ICountry } from "../../types/country";
 import Chip from "../../Components/chip/Chip";
 import styles from "./countrypage.module.css";
 import Button from "../../Components/button/Button";
-import { ArrowLeft, Users } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router";
-import Card from "../../Components/card/Card";
+import DetailsCountryPage from "../../Components/infoCountry/detailsCountryPage";
 
 function CountryPage() {
   const { name } = useParams();
@@ -28,9 +28,9 @@ function CountryPage() {
 
   return (
     country && ( //o country existe? então, vai mostrar tudo o que está dentro da div.
-      <section className={styles.countryPage}>
+      <section id={styles.countryPage}>
         <div className={styles.intro}>
-          <div className={styles.countryName}>
+          <div className={styles["info-section"]}>
             <Link to={"/countries"}>
               <Button variant="secondary">
                 <ArrowLeft />
@@ -40,54 +40,34 @@ function CountryPage() {
             <h1>{country.name.common}</h1>
             <h3>{country.name.official}</h3>
             <div className={styles.chips}>
-              <Chip text={country.continents[0]} variant="primary" />
+              <Chip text={country.capital[0]} variant="primary" />
               <Chip text={country.region} variant="secondary" />
-              <Chip text={country.subregion} variant="terciary" />
+              {country.subregion && (
+                <Chip text={country.subregion} variant="terciary" />
+              )}
+              {/*  se houver subregion, então vai aparecer chip, caso não haja subregion, nao aparece nada*/}
             </div>
           </div>
           <div>
-            {/* <CountryCard country={country} /> */}
             <img className={styles.flagImg} src={country.flags.png} />
           </div>
         </div>
-        <div className={styles.countryInfo}>
-          <div className={styles.leftSide}>
-            <div className={styles.mainInfo}>
-              <Card>
-                <div className={styles.cardContents}>
-                  <Users />
-                  <h4>Population</h4>
-                </div>
-              </Card>
-              <Card>
-                <div className={styles.cardContents}>
-                  <Users />
-                  <h4>Area</h4>
-                </div>
-              </Card>
-              <Card>
-                <div className={styles.cardContents}>
-                  <Users />
-                  <h4>Coat of Arms</h4>
-                </div>
-              </Card>
-              <Card>
-                <div className={styles.cardContents}>
-                  <Users />
-                  <h4>Coat of Arms</h4>
-                </div>
-              </Card>
-            </div>
+        <section id={styles["main-section"]}>
+          <div className={styles["left-side"]}>
+            <div className={styles.cardsLeftSide}>
+              
+            <DetailsCountryPage title={"Population"} value={country.population}/>
+            <DetailsCountryPage title={"Population"} value={country.population}/>
+            <DetailsCountryPage title={"Population"} value={country.population}/>
+            <DetailsCountryPage title={"Population"} value={country.population}/>
           </div>
-          <div className={styles.rightSide}>
-            <Card>
-              <div className={styles.cardContents}>
-                <Users />
-                <h4>Population</h4>
-              </div>
-            </Card>
           </div>
-        </div>
+          <div className={styles["right-side"]}>
+            <div className={styles.cardsRightSide}>
+            <DetailsCountryPage title={"Coat of Arms"} value={<img className={styles.image} src={country.coatOfArms.png} alt="Coat of Arms" />} />
+          </div>
+          </div>
+        </section>
       </section>
     )
   );

@@ -20,7 +20,7 @@ function CountriesPage() {
     return country.region;
   });
   const uniqueContinents = [...new Set(continents)]; //pega na lista e garate que tenho valores unicos dos que sao repetidos
-//fazer tentativa do replace para tirar os espaços em branco
+  //fazer tentativa do replace para tirar os espaços em branco
   //regions
   const regions = countries.map((country) => {
     //criar uma variavel, e quero que ele vá a todos os paises e retorne a subregion
@@ -64,7 +64,6 @@ function CountriesPage() {
       country.capital?.[0]?.toLowerCase().includes(inpuText.toLowerCase()) ||
       country.region.toLowerCase().includes(searchLowerCase);
 
-
     const continentsSelector =
       selectedContinent === "" || country.region === selectedContinent; //verifica se o continente selecionado é vazio ou se o continente do país é igual ao continente selecionado
     const regionsSelector =
@@ -73,13 +72,16 @@ function CountriesPage() {
       selectedCurrency === "" ||
       (country.currencies &&
         Object.keys(country.currencies).includes(selectedCurrency)); //ele aceita as correncies sem valor (o default) e verifica se as keys do object das currencies incluem o que esta inserido na gaveta do selectedCurrency
-console.log(searchAll, continentsSelector, regionsSelector, currencySelector)
-    return (
-      searchAll && continentsSelector && regionsSelector && currencySelector 
+    console.log(
+      searchAll,
+      continentsSelector,
+      regionsSelector,
+      currencySelector,
     );
-    
+    return (
+      searchAll && continentsSelector && regionsSelector && currencySelector
+    );
   });
-    console.log("oalalal", filteredCountries)
 
   const clearFilter = () => {
     setSelectedContinent("");
@@ -116,10 +118,10 @@ console.log(searchAll, continentsSelector, regionsSelector, currencySelector)
         </div>
 
         <div className="filters">
-          <Funnel className="filterIcon" size={18}/>
+          <Funnel className="filterIcon" size={18} />
           <span>Filter by:</span>
           <select
-            value={selectedContinent} 
+            value={selectedContinent}
             onChange={(e) => setSelectedContinent(e.target.value)}
           >
             <option value="">Continents</option>
@@ -148,28 +150,23 @@ console.log(searchAll, continentsSelector, regionsSelector, currencySelector)
               return <option>{currency}</option>;
             })}
           </select>
-          <Button variant="terciary" onClick={clearFilter} >Clear filter</Button>
+          <Button variant="terciary" onClick={clearFilter}>
+            Clear filter
+          </Button>
         </div>
       </div>
 
       <div className="grid">
-          {filteredCountries?.map((country) => {
-            {
-              /*Aqui o country ºe cada item do array*/
-            }
-            return (
-              <Link to={`/countries/${country.name.common}`}>
-                <Card country={country} />
-              </Link>
-            );
-          })}
-
-        {/* {!inpuText && //Se nao fizer match na search
-          filteredCountries?.map((country) => {
-            {
-              /*Aqui o country ºe cada item do array*/
-            }
-          
+        {filteredCountries?.map((country) => {
+          {
+            /*Aqui o country ºe cada item do array*/
+          }
+          return (
+            <Link to={`/countries/${country.name.common}`}>
+              <Card country={country} />
+            </Link>
+          );
+        })}
       </div>
     </>
   );

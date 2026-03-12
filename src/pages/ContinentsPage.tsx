@@ -1,9 +1,9 @@
-function Continents() {
+function ContinentsPage() {
   return (
-    <div>
-      <h1>The continentsssss</h1>
-    </div>
+    <>
+      <h1>ContinentsPage</h1>
+    </>
   );
 }
 
-export default Continents
+export default ContinentsPage;

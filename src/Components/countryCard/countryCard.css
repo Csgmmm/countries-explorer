@@ -13,4 +13,13 @@
   color: pink;
 }
 
+.card-container {
+  height: 150px;
+  
+}
 
+.card-container .card-img {
+  height: 150px;
+  align-items: center;
+  width: auto;
+}
