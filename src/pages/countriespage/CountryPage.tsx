@@ -4,9 +4,10 @@ import type { ICountry } from "../../types/country";
 import Chip from "../../Components/chip/Chip";
 import styles from "./countrypage.module.css";
 import Button from "../../Components/button/Button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Coins, Earth, MapPin, Shield, Users } from "lucide-react";
 import { Link } from "react-router";
 import DetailsCountryPage from "../../Components/infoCountry/detailsCountryPage";
+import BordersList from "../../Components/borderslist/Borderslist";
 
 function CountryPage() {
   const { name } = useParams();
@@ -55,17 +56,59 @@ function CountryPage() {
         <section id={styles["main-section"]}>
           <div className={styles["left-side"]}>
             <div className={styles.cardsLeftSide}>
-              
-            <DetailsCountryPage title={"Population"} value={country.population}/>
-            <DetailsCountryPage title={"Population"} value={country.population}/>
-            <DetailsCountryPage title={"Population"} value={country.population}/>
-            <DetailsCountryPage title={"Population"} value={country.population}/>
-          </div>
+              <DetailsCountryPage
+                title={
+                  <div className="subtitleContainer">
+                    <Users className="icon" />
+                    <span>Population</span>
+                  </div>
+                }
+                value={country.population}
+              />
+              <DetailsCountryPage
+                title={
+                  <div className="subtitleContainer">
+                    <MapPin className="icon" />
+                    <span>Area</span>
+                  </div>
+                }
+                value={`${country.area} km²`}
+                
+              />
+              <DetailsCountryPage
+                title={
+                  <div className="subtitleContainer">
+                    <Earth className="icon" />
+                    <span>Capital</span>
+                  </div>
+                }
+                value={country.capital}
+              />
+              <DetailsCountryPage
+                title={
+                  <div className="subtitleContainer">
+                    <Coins className="icon" />
+                    <span>Currency</span>
+                  </div>
+                }
+                value={`${country.currencies[Object.keys(country.currencies)[0]].name} (${country.currencies[Object.keys(country.currencies)[0]].symbol})`}
+              />
+            </div>
           </div>
           <div className={styles["right-side"]}>
             <div className={styles.cardsRightSide}>
-            <DetailsCountryPage title={"Coat of Arms"} value={<img className={styles.image} src={country.coatOfArms.png} alt="Coat of Arms" />} />
-          </div>
+              <DetailsCountryPage
+                title={"Coat of Arms"}
+                value={
+                  <img
+                    className={styles.image}
+                    src={country.coatOfArms.png}
+                    alt="Coat of Arms"
+                  />
+                }
+              />
+              <BordersList borderCountryCodes={country.borders}></BordersList>
+            </div>
           </div>
         </section>
       </section>
